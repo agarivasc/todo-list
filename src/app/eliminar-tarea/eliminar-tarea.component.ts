@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-eliminar-tarea',
@@ -8,10 +8,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './eliminar-tarea.component.css'
 })
 export class EliminarTareaComponent {
-  @Input() eliminarTareaRecibida: string[] = [];
-  @Input() recibirIndex: number = -1;
+  @Output() eliminarTareaEvent = new EventEmitter<void>();
 
-  eliminarTarea(index: number) {
-    this.eliminarTareaRecibida.splice(index, 1);
+  eliminarTarea() {
+    this.eliminarTareaEvent.emit();
   }
 }
